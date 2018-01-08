@@ -739,7 +739,7 @@ public class InAppBrowser extends CordovaPlugin {
                     public void onClick(View v) {
 
                        //closeDialog();
-                    	InAppBrowser IAB = new InAppBrowser();
+                    	InAppBrowserDialog IAB = new InAppBrowserDialog();
 						IAB.onBackPressed();
 
                     }
