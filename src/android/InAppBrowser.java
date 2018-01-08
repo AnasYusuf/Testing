@@ -663,6 +663,7 @@ public class InAppBrowser extends CordovaPlugin {
 
                 back.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
+                    	 Toast.makeText(this.cordova.getActivity(),"click listener",Toast.LENGTH_SHORT).show();
                         goBack();
                     }
                 });
@@ -736,8 +737,8 @@ public class InAppBrowser extends CordovaPlugin {
 
                 close.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
+
                        closeDialog();
-                       finish();
                     }
                 });
 
