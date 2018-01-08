@@ -33,15 +33,12 @@ public class InAppBrowserDialog extends Dialog {
     Context context;
     InAppBrowser inAppBrowser = null;
 
-//     public InAppBrowserDialog(Context context, int theme) {
-//         super(context, theme);
-//         this.context = context;
-//     }
+    public InAppBrowserDialog(Context context, int theme) {
+        super(context, theme);
+        this.context = context;
+    }
 
-//     public InAppBrowserDialog() {
-//     super();
-// }
-
+    
     public void setInAppBroswer(InAppBrowser browser) {
         this.inAppBrowser = browser;
     }
