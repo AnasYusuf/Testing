@@ -739,7 +739,7 @@ public class InAppBrowser extends CordovaPlugin {
                     public void onClick(View v) {
 
                        //closeDialog();
-                    	hardwareBack();
+                    	InAppBrowserDialog.onBackPressed();
                     }
                 });
 
