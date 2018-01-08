@@ -126,11 +126,6 @@ public class InAppBrowser extends CordovaPlugin {
      * @param callbackContext the callbackContext used when calling back into JavaScript.
      * @return A PluginResult object with a status and message.
      */
-
-public void setInAppBroswerDialog(InAppBrowserDialog BackPressed) {
-        this.BackPressed = BackPressed;
-    }
-
     public boolean execute(String action, CordovaArgs args, final CallbackContext callbackContext) throws JSONException {
         if (action.equals("open")) {
             this.callbackContext = callbackContext;
@@ -744,7 +739,7 @@ public void setInAppBroswerDialog(InAppBrowserDialog BackPressed) {
                     public void onClick(View v) {
 
                        //closeDialog();
-                    	this.BackPressed.onBackPressed();
+                    	
 
                     }
                 });
