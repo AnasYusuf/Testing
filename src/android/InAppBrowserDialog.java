@@ -33,8 +33,9 @@ public class InAppBrowserDialog extends Dialog {
     Context context;
     InAppBrowser inAppBrowser = null;
 
-     public InAppBrowserDialog(context,theme) {
-    
+     public InAppBrowserDialog() {
+    context = "";
+    theme = "";
 }
 
 
