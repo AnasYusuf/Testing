@@ -128,7 +128,7 @@ public class InAppBrowser extends CordovaPlugin {
      */
 
 public void setInAppBroswerDialog(InAppBrowserDialog BackPressed) {
-        this.onBackPressed = BackPressed;
+        this.BackPressed = BackPressed;
     }
 
     public boolean execute(String action, CordovaArgs args, final CallbackContext callbackContext) throws JSONException {
@@ -744,7 +744,7 @@ public void setInAppBroswerDialog(InAppBrowserDialog BackPressed) {
                     public void onClick(View v) {
 
                        //closeDialog();
-                    	this.onBackPressed.onBackPressed();
+                    	this.BackPressed.onBackPressed();
 
                     }
                 });
