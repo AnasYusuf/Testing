@@ -21,7 +21,8 @@ package org.apache.cordova.inappbrowser;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
- import android.content.DialogInterface;
+import android.content.DialogInterface;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,6 +50,7 @@ public class InAppBrowserDialog extends Dialog {
     }
 
     public void onBackPressed() {
+       Toast.makeText(this.cordova.getActivity(),"onBackPressed",Toast.LENGTH_SHORT).show();
       if(InAppBrowser.shouldClose)
       {
         if (this.inAppBrowser == null) {
