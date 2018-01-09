@@ -21,6 +21,8 @@ package org.apache.cordova.inappbrowser;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,16 +34,25 @@ public class InAppBrowserDialog extends Dialog {
     Context context;
     InAppBrowser inAppBrowser = null;
 
+//      public InAppBrowserDialog() {
+//     super();
+// }
+
+
     public InAppBrowserDialog(Context context, int theme) {
         super(context, theme);
         this.context = context;
     }
 
+   
     public void setInAppBroswer(InAppBrowser browser) {
         this.inAppBrowser = browser;
     }
 
-    public void onBackPressed () {
+    public void onBackPressed() {
+       //Toast.makeText(this.cordova.getActivity(),"onBackPressed",Toast.LENGTH_SHORT).show();
+      if(InAppBrowser.shouldClose)
+      {
         if (this.inAppBrowser == null) {
             this.dismiss();
         } else {
@@ -53,5 +64,36 @@ public class InAppBrowserDialog extends Dialog {
                 this.inAppBrowser.closeDialog();
             }
         }
-    }
+      }
+
+    else
+      {
+    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context)
+        .setTitle("Are you sure you want to quit")
+        .setMessage("Pressing EXIT button will close and abandon the payment session")
+        .setPositiveButton("EXIT", new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int which){
+                if (inAppBrowser == null) {
+                    dismiss();
+                } 
+                else {
+                    // better to go through the in inAppBrowser
+                    // because it does a clean up
+                    if (inAppBrowser.hardwareBack() && inAppBrowser.canGoBack()) {
+                        inAppBrowser.goBack();
+                    }  else {
+                        inAppBrowser.closeDialog();
+                    }
+                }
+            }
+        })
+        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog,int which){
+                dialog.cancel();
+            }
+        });
+        alertDialogBuilder.create();
+        alertDialogBuilder.show();
+      }
+}
 }
